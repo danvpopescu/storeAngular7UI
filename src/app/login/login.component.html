@@ -1,0 +1,34 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <h5 *ngIf="success">Your form is valid!</h5>
+
+	<div>
+		<label>User:</label>
+		<input type="text" formControlName="username">
+		<div *ngIf="submitted && loginForm.controls.username.errors" class="error">
+			<div *ngIf="loginForm.controls.username.errors.required">The username is required</div>
+		</div>
+	</div>
+	<p></p>
+    <div>
+		<label>Password:</label>
+		<input type="text" formControlName="password">
+		<div *ngIf="submitted && loginForm.controls.password.errors" class="error">
+			<div *ngIf="loginForm.controls.password.errors.required">The password is required</div>
+		</div>
+    </div>
+	<p></p>
+	<div>
+		<input type="submit" value="Login" class="btn">
+	</div>
+	<p></p>
+  </form>
+
+  <div *ngIf="submitted" class="results">
+    <strong>Name:</strong> 
+    <span>{{ loginForm.controls.username.value }}</span>
+
+    <strong>Message:</strong> 
+    <span>{{ loginForm.controls.password.value }}</span>
+  </div>
